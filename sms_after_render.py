@@ -1,7 +1,7 @@
 bl_info = {
     "name": "SMS notification after Render",
     "description": "...",
-    "author": "--",
+    "author": "Nikos Priniotakis",
     "version": (1, 0),
     "blender": (2, 74, 0),
     "location": "",
