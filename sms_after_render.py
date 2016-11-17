@@ -2,7 +2,7 @@ bl_info = {
     "name": "SMS notification after Render",
     "description": "...",
     "author": "Nikos Priniotakis",
-    "version": (1, 0),
+    "version": (1, 5),
     "blender": (2, 74, 0),
     "location": "",
     "warning": "",
@@ -10,15 +10,13 @@ bl_info = {
     "category": "Render"}
 
 import bpy
-import os
-import urllib
-import urllib.request
 from bpy.app.handlers import persistent
+import nexmo
 
 @persistent
 def render_complete_handler(sms):
-    # The following line has to be changed to match your SMS API protocol
-    x = urllib.request.urlopen('https://smsapi.free-mobile.fr/sendmsg?user=your_login&pass=your_password&msg=Render%20Finished%20!')
+    client = nexmo.Client(key='65d96651', secret='ea592f4844728f46')
+    client.send_message({'from': '+33644632797', 'to': '33781247423', 'text': 'Your render is finished, my lord.'})
 
 def register():
     bpy.app.handlers.render_complete.append(render_complete_handler)
